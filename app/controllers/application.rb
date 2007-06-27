@@ -2,6 +2,8 @@ require 'localization'
 
 class ApplicationController < ActionController::Base
   include Localization
+  include AuthenticatedSystem
+
   layout 'mwrt002'
   before_filter :populate_layout
 

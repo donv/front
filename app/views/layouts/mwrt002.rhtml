@@ -16,7 +16,6 @@
   <meta name="copyright" content="Copyright &copy; 2006" />
   <link href="/favicon.ico" rel="SHORTCUT ICON" />
   <%= stylesheet_link_tag 'mwrt002', :media => 'screen' %>
-  <%= stylesheet_link_tag 'backlog', :media => 'screen' %>
   <script type="text/javascript">
 function handlePageEvent(event) {
   if (event.altKey && event.shiftKey && event.charCode == 78) {
@@ -34,8 +33,12 @@ function handlePageEvent(event) {
 <div id="wrap">
   <div id="leftcol">
     <div id="navbar">
-      <%= link_to l(:log_in), :controller => 'user'%>
-      | <a href="#" title="Log out">Log out</a>
+      <%=link_to l(:home), :controller => 'welcome', :action => :index %> |
+      <% if logged_in? %>
+      <%=link_to l(:log_out), :controller => 'account', :action => :logout %>
+      <% else %>
+      <%= link_to l(:log_in), :controller => 'account', :action => :login %>
+      <% end %>
       | <a href="#" title="Administration">Administration</a>
       | <a href="#" title="Profile">Profile</a>
     </div>

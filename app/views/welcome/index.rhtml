@@ -1,20 +1,20 @@
-<h1>Welcome to kubosch.no</h1>
+<% @page_title = @site.title%>
 
-<p>This is the internal web of Kubosch Consulting and the private web of the Kubosch family, location Kurland.</p>
+<p><%=h @site.welcome_text%></p>
 
-<h2>My book is out!</h2>
+<% if logged_in? %>
+<div align="right">[<%=link_to l(:edit), :controller => 'sites', :action => :edit, :id => @site %>]</div>
+<% end %>
 
-<p>
-For the last 5 years, I have worked on documenting the martial arts style I practice.  FINALLY the first edition of the book is out!
-You can find it in <a href="http://shop.kubosch.no/store/pagelist/11">my shop</a>.
+<% @news_items.each do |@news_item| %>
+<h2><%=h @news_item.title%></h2>
+<p><%=@news_item.body%></p>
+<% if logged_in? %>
+<div align="right">[<%=link_to l(:edit), :controller => 'news_items', :action => :edit, :id => @news_item %>]</div>
+<% end %>
+<% end %>
 
-<h2>Backlog</h2>
-<p>The
-    <a href="http://backlog.kubosch.no/">Backlog</a> has undergone lots of changes.
-    Check it out!
-</p>
+<% if logged_in? %>
+<div align="right">[<%=link_to l(:new), :controller => 'news_items', :action => :new %>]</div>
+<% end %>
 
-<p>
-The changes include multiple backlogs/projects/todo-lists (it's all the same ;) ),
-multiple periods per backlog, Burn-Down-Charts, and options for tracking estimation points per task, tracking work done, and tracking when work started and stopped.
-</p>
