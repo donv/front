@@ -6,7 +6,7 @@ role :app, "www.kubosch.no"
 role :db,  "www.kubosch.no", :primary => true
 
 # set :deploy_to, "/path/to/app" # defaults to "/u/apps/#{application}"
-set :user, "root"                # defaults to the currently logged in user
+set :user, "donv"                # defaults to the currently logged in user
 set :use_sudo, false
 
 desc "The spinner task is used by :cold_deploy to start the application up"
