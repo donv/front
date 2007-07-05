@@ -1,6 +1,6 @@
 <% @page_title = @site.title%>
 
-<p><%=h @site.welcome_text%></p>
+<p><%=textilize @site.welcome_text%></p>
 
 <% if logged_in? %>
 <div align="right">[<%=link_to l(:edit), :controller => 'sites', :action => :edit, :id => @site %>]</div>
@@ -8,7 +8,7 @@
 
 <% @news_items.each do |@news_item| %>
 <h2><%=h @news_item.title%></h2>
-<p><%=@news_item.body%></p>
+<p><%=textilize @news_item.body%></p>
 <% if logged_in? %>
 <div align="right">[<%=link_to l(:edit), :controller => 'news_items', :action => :edit, :id => @news_item %>]</div>
 <% end %>
