@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   layout 'mwrt002'
+  before_filter :login_from_cookie
   before_filter :populate_layout
 
   private
