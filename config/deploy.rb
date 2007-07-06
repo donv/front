@@ -9,10 +9,10 @@ set :use_sudo, false
 
 desc "The spinner task is used by :cold_deploy to start the application up"
 task :spinner, :roles => :app do
-send(run_method, "/sbin/service #{application} start")
+  send(run_method, "/sbin/service #{application} start")
 end
 
 desc "Restart the mongrel server"
 task :restart, :roles => :app do
-send(run_method, "/sbin/service #{application} restart")
+  send(run_method, "/sbin/service #{application} restart")
 end
