@@ -1,7 +1,6 @@
 development:
   adapter: postgresql
   database: front_development
-  username: uwe
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -9,9 +8,7 @@ development:
 test:
   adapter: postgresql
   database: front_test
-  username: uwe
 
 production:
   adapter: postgresql
   database: front_production
-  username: donv
