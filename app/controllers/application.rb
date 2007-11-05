@@ -32,10 +32,8 @@ EOF
         <li><a href="usage">Webalizer</a></li>
         <li>MRTG
             <ul>
-                <li><a href="mrtg/local.html">Local Ethernet</a></li>
+                <li><a href="mrtg/kubosch.no.html">Main Server</a></li>
                 <li><a href="mrtg/gateway_external.html">Gateway External Line</a></li>
-
-                <li><a href="mrtg/gateway_internal.html">Gateway Ethernet</a></li>
         </li>
     </ul>
 EOF
