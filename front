@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# fornt      Startup script for the KC front application
+#
+# chkconfig: 345 88 12
+# description: KC front web application
+
+app=front
+user=donv
+port=3003
+
+# See how we were called.
+case "$1" in
+  start)
+        su - $user -c "mongrel_rails start -p $port -e production -c /u/apps/$app/current -d 1>/u/apps/$app/shared/log/stdout.log 2>/u/apps/$app/shared/log/stderr.log"
+        ;;
+  stop)
+        su - $user -c "mongrel_rails stop -c /u/apps/$app/current"
+        ;;
+  restart)
+        su - $user -c "mongrel_rails restart -c /u/apps/$app/current"
+        ;;
+  status)
+        ps -ef | grep $app
+        ;;
+  *)
+        echo $"Usage: $prog {start|stop|restart|status}"
+        exit 1
+esac
+
+exit 0
