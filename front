@@ -8,10 +8,12 @@
 app=front
 user=donv
 port=3003
+pidfile=${PIDFILE-/u/apps/$app/shared/log/mongrel.pid}
 
 # See how we were called.
 case "$1" in
   start)
+        rm -f ${pidfile}
         su - $user -c "mongrel_rails start -p $port -e production -c /u/apps/$app/current -d 1>/u/apps/$app/shared/log/stdout.log 2>/u/apps/$app/shared/log/stderr.log"
         ;;
   stop)
