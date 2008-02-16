@@ -1,29 +1,31 @@
 #!/bin/bash
 #
-# fornt      Startup script for the KC front application
+# front      Startup script for the KC front application
 #
 # chkconfig: 345 88 12
 # description: KC front web application
 
-app=front
-user=donv
-port=3003
-pidfile=${PIDFILE-/u/apps/$app/shared/log/mongrel.pid}
+APP=front
+RUN_AS_USER=donv
+PORT=3003
+pidfile=${PIDFILE-/u/apps/$APP/shared/log/mongrel.pid}
+APP_DIR="/u/apps/$APP/current"
+LOG_DIR="/u/apps/$APP/shared/log"
 
 # See how we were called.
 case "$1" in
   start)
         rm -f ${pidfile}
-        su - $user -c "mongrel_rails start -p $port -e production -c /u/apps/$app/current -d 1>/u/apps/$app/shared/log/stdout.log 2>/u/apps/$app/shared/log/stderr.log"
+        su - $user -c "mongrel_rails start -p $PORT -e production -c $APP_DIR -d 1>$LOG_DIR/stdout.log 2>$LOG_DIR/stderr.log"
         ;;
   stop)
-        su - $user -c "mongrel_rails stop -c /u/apps/$app/current"
+        su - $user -c "mongrel_rails stop -c $APP_DIR"
         ;;
   restart)
-        su - $user -c "mongrel_rails restart -c /u/apps/$app/current"
+        su - $user -c "mongrel_rails restart -c $APP_DIR"
         ;;
   status)
-        ps -ef | grep $app
+        ps -ef | grep $APP
         ;;
   *)
         echo $"Usage: $prog {start|stop|restart|status}"
