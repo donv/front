@@ -24,13 +24,13 @@ case "$1" in
 		then
 			rm -f $pidfile
 		fi
-        su - $user -c "mongrel_rails start -p $PORT -e production -c $APP_DIR -d 1>$LOG_DIR/stdout.log 2>$LOG_DIR/stderr.log"
+        su - $RUN_AS_USER -c "mongrel_rails start -p $PORT -e production -c $APP_DIR -d 1>$LOG_DIR/stdout.log 2>$LOG_DIR/stderr.log"
         ;;
   stop)
-        su - $user -c "mongrel_rails stop -c $APP_DIR"
+        su - $RUN_AS_USER -c "mongrel_rails stop -c $APP_DIR"
         ;;
   restart)
-        su - $user -c "mongrel_rails restart -c $APP_DIR"
+        su - $RUN_AS_USER -c "mongrel_rails restart -c $APP_DIR"
         ;;
   status)
         ps -ef | grep $APP
