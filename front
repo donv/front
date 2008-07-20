@@ -17,6 +17,18 @@ LOG_DIR="/u/apps/$APP/shared/log"
 
 USER=`whoami`
 
+run() {
+	cmd=$1
+	if [ "$USER" != "$RUN_AS_USER" ]; then
+		echo Running as $USER
+        echo su - $RUN_AS_USER -c "$cmd"
+        su - $RUN_AS_USER -c "$cmd"
+    else
+    	echo $cmd
+        $cmd
+    fi
+}
+
 # See how we were called.
 case "$1" in
   start)
@@ -24,20 +36,20 @@ case "$1" in
 	then
 	    rm -f $pidfile
 	fi
-        su - $RUN_AS_USER -c "mongrel_rails start -p $PORT -e production -c $APP_DIR -d 1>$LOG_DIR/stdout.log 2>$LOG_DIR/stderr.log"
-        ;;
+    run "mongrel_rails start -p $PORT -e production -c $APP_DIR -d 1>$LOG_DIR/stdout.log 2>$LOG_DIR/stderr.log"
+    ;;
   stop)
-        su - $RUN_AS_USER -c "mongrel_rails stop -c $APP_DIR"
-        ;;
+    run "mongrel_rails stop -c $APP_DIR"
+    ;;
   restart)
-        su - $RUN_AS_USER -c "mongrel_rails restart -c $APP_DIR"
-        ;;
+    run "mongrel_rails restart -c $APP_DIR"
+    ;;
   status)
-        ps -ef | grep $APP
-        ;;
+    ps -ef | grep $APP
+    ;;
   *)
-        echo $"Usage: $prog {start|stop|restart|status}"
-        exit 1
+    echo $"Usage: $prog {start|stop|restart|status}"
+    exit 1
 esac
 
 exit 0
