@@ -8,9 +8,15 @@ set :user, "donv"
 set :use_sudo, false
 
 namespace :deploy do
+  
   desc "The spinner task is used by :cold_deploy to start the application up"
   task :spinner, :roles => :app do
     send(run_method, "/sbin/service #{application} start")
+  end
+  
+  desc "Stop the application"
+  task :stop, :roles => :app do
+    send(run_method, "/sbin/service #{application} stop")
   end
   
   desc "Restart the mongrel server"
