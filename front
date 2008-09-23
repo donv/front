@@ -45,7 +45,7 @@ case "$1" in
     run "mongrel_rails restart -c $APP_DIR"
     ;;
   status)
-    ps -ef | grep $APP
+    ps -ef | grep $APP | grep -e "grep|status"
     ;;
   *)
     echo $"Usage: $prog {start|stop|restart|status}"
