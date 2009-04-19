@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       <ul>
         <li><a href="http://augustson.org/">Augustson Consulting</a></li>
         <li><a href="http://jujutsu.no/">Romerike Jujutsu Klubb</a></li>
-        <li><a href="http://adcentrum.no/">adCentrum</a></li>
+        <li><a href="http://adcentrum.no/">AdCentrum</a></li>
       </ul>
 EOF
       },
