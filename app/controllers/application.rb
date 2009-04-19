@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       { :title => l(:hosted_sites),
         :content => <<EOF
       <ul>
-        <li><a href="http://augustson.no/">Augustson Consulting</a></li>
+        <li><a href="http://augustson.org/">Augustson Consulting</a></li>
         <li><a href="http://jujutsu.no/">Romerike Jujutsu Klubb</a></li>
         <li><a href="http://adcentrum.no/">adCentrum</a></li>
       </ul>
