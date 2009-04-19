@@ -14,6 +14,15 @@ class ApplicationController < ActionController::Base
     @application_title = 'kubosch.no'
     @application_description = ''
     @sidebars = [
+      { :title => l(:hosted_sites),
+        :content => <<EOF
+      <ul>
+        <li><a href="http://augustson.no/">Augustson Consulting</a></li>
+        <li><a href="http://jujutsu.no/">Romerike Jujutsu Klubb</a></li>
+        <li><a href="http://adcentrum.no/">adCentrum</a></li>
+      </ul>
+EOF
+      },
       { :title => l(:sections),
         :content => <<EOF
       <ul>
