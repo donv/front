@@ -1,6 +1,8 @@
 class AccountController < ApplicationController
+  include AuthenticatedSystem
+
   def index
-    redirect_to(:action => 'signup') unless logged_in? || User.count > 0
+    redirect_to(action: :signup) unless logged_in? || User.count > 0
   end
 
   def login
@@ -17,7 +19,7 @@ class AccountController < ApplicationController
   end
 
   def signup
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     return unless request.post?
     @user.save!
     self.current_user = @user
@@ -31,7 +33,14 @@ class AccountController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default(:controller => 'welcome', :action => 'index')
+    flash[:notice] = 'You have been logged out.'
+    redirect_back_or_default(controller: :welcome, action: :index)
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :login, :password, :password_confirmation)
+  end
+
 end

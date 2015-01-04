@@ -1,5 +1,6 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
-  id: 1
+first:
+  title: First News Item
+  body: First News Body
 two:
-  id: 2
+  title: Second News Item
+  body: Second News Body

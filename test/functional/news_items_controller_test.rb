@@ -4,7 +4,7 @@ require 'news_items_controller'
 # Re-raise errors caught by the controller.
 class NewsItemsController; def rescue_action(e) raise e end; end
 
-class NewsItemsControllerTest < Test::Unit::TestCase
+class NewsItemsControllerTest < ActionController::TestCase
   fixtures :news_items
 
   def setup
@@ -52,16 +52,17 @@ class NewsItemsControllerTest < Test::Unit::TestCase
   def test_create
     num_news_items = NewsItem.count
 
-    post :create, :news_item => {}
+    post :create, news_item: {title: 'A new news item', body: 'A new body!'}
+    assert_no_errors :news_item
 
     assert_response :redirect
-    assert_redirected_to :action => 'list'
+    assert_redirected_to root_path
 
     assert_equal num_news_items + 1, NewsItem.count
   end
 
   def test_edit
-    get :edit, :id => @first_id
+    get :edit, id: @first_id
 
     assert_response :success
     assert_template 'edit'
@@ -71,9 +72,9 @@ class NewsItemsControllerTest < Test::Unit::TestCase
   end
 
   def test_update
-    post :update, :id => @first_id
+    post :update, id: @first_id, news_item:{title: 'changed news item title'}
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => @first_id
+    assert_redirected_to root_path
   end
 
   def test_destroy
@@ -81,9 +82,9 @@ class NewsItemsControllerTest < Test::Unit::TestCase
       NewsItem.find(@first_id)
     }
 
-    post :destroy, :id => @first_id
+    post :destroy, id: @first_id
     assert_response :redirect
-    assert_redirected_to :action => 'list'
+    assert_redirected_to action: :list
 
     assert_raise(ActiveRecord::RecordNotFound) {
       NewsItem.find(@first_id)

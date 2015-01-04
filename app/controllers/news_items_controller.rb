@@ -1,15 +1,11 @@
 class NewsItemsController < ApplicationController
   def index
     list
-    render :action => 'list'
+    render action: :list
   end
 
-  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
-
   def list
-    @news_item_pages, @news_items = paginate :news_items, :per_page => 10
+    @news_items = NewsItem.paginate per_page: 10, page: params[:page]
   end
 
   def show
@@ -21,10 +17,10 @@ class NewsItemsController < ApplicationController
   end
 
   def create
-    @news_item = NewsItem.new(params[:news_item])
+    @news_item = NewsItem.new(news_item_params)
     if @news_item.save
       flash[:notice] = 'NewsItem was successfully created.'
-      redirect_to :controller => 'welcome', :action => :index
+      redirect_to controller: :welcome, action: :index
     else
       render :action => 'new'
     end
@@ -36,16 +32,22 @@ class NewsItemsController < ApplicationController
 
   def update
     @news_item = NewsItem.find(params[:id])
-    if @news_item.update_attributes(params[:news_item])
+    if @news_item.update_attributes(news_item_params)
       flash[:notice] = 'NewsItem was successfully updated.'
-      redirect_to :controller => 'welcome', :action => :index
+      redirect_to controller: :welcome, action: :index
     else
-      render :action => 'edit'
+      render action: :edit
     end
   end
 
   def destroy
     NewsItem.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to action: :list
   end
+end
+
+private
+
+def news_item_params
+  params.require(:news_item).permit(:body, :title)
 end

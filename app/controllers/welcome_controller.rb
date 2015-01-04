@@ -1,11 +1,10 @@
 class WelcomeController < ApplicationController
   def index
-    @site = Site.find(:first)
+    @site = Site.first
     if @site
-      @news_items = NewsItem.find(:all, :order => 'created_at DESC')
+      @news_items = NewsItem.order('created_at DESC').to_a
     else
-      redirect_to :controller => 'sites', :action => :new
+      redirect_to controller: :sites, action: :new
     end
   end
-  
 end

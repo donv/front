@@ -2,15 +2,21 @@ require File.dirname(__FILE__) + '/../test_helper'
 require 'sites_controller'
 
 # Re-raise errors caught by the controller.
-class SitesController; def rescue_action(e) raise e end; end
+class SitesController;
+  def rescue_action(e)
+    raise e
+  end
 
-class SitesControllerTest < Test::Unit::TestCase
+  ;
+end
+
+class SitesControllerTest < ActionController::TestCase
   fixtures :sites
 
   def setup
     @controller = SitesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
+    @request = ActionController::TestRequest.new
+    @response = ActionController::TestResponse.new
 
     @first_id = sites(:first).id
   end
@@ -52,16 +58,17 @@ class SitesControllerTest < Test::Unit::TestCase
   def test_create
     num_sites = Site.count
 
-    post :create, :site => {}
+    post :create, site: {title: 'new site', welcome_text: 'new welcome text'}
+    assert_no_errors :site
 
     assert_response :redirect
-    assert_redirected_to :action => 'list'
+    assert_redirected_to action: :list
 
     assert_equal num_sites + 1, Site.count
   end
 
   def test_edit
-    get :edit, :id => @first_id
+    get :edit, id: @first_id
 
     assert_response :success
     assert_template 'edit'
@@ -71,9 +78,9 @@ class SitesControllerTest < Test::Unit::TestCase
   end
 
   def test_update
-    post :update, :id => @first_id
+    post :update, id: @first_id, site: {title: 'changed title'}
     assert_response :redirect
-    assert_redirected_to :action => 'show', :id => @first_id
+    assert_redirected_to action: :show, id: @first_id
   end
 
   def test_destroy
@@ -81,9 +88,9 @@ class SitesControllerTest < Test::Unit::TestCase
       Site.find(@first_id)
     }
 
-    post :destroy, :id => @first_id
+    post :destroy, id: @first_id
     assert_response :redirect
-    assert_redirected_to :action => 'list'
+    assert_redirected_to action: :list
 
     assert_raise(ActiveRecord::RecordNotFound) {
       Site.find(@first_id)
