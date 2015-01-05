@@ -6,7 +6,7 @@ Type=forking
 User=capistrano
 Group=capistrano
 WorkingDirectory=/u/apps/front/current
-ExecStart=/u/apps/sports/current/front start
+ExecStart=/u/apps/front/current/front start
 PIDFile=/u/apps/front/shared/pids/server.pid
 
 # Timeout for start up/shut down
