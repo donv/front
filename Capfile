@@ -24,7 +24,7 @@ before 'deploy:create_symlink', :announce_maintenance
 after 'deploy:create_symlink', :announce_maintenance
 after 'deploy', :end_maintenance
 
-set :rvm_ruby_string, :ruby
+set :rvm_ruby_string, :jruby
 set :rvm_autolibs_flag, 'read-only'
 
 namespace :rvm do
