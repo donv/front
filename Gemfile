@@ -2,25 +2,33 @@ source 'https://rubygems.org'
 
 gem 'rails', '~>4.1.8'
 
-# gem 'bcrypt', '~> 3.1.7'
-gem 'coffee-rails', '~> 4.0.0'
+platform :jruby do
+  gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'therubyrhino'
+end
+
+platform :ruby do
+  gem 'pg'
+  gem 'therubyracer'
+end
+
+gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-sass'
+gem 'coffee-rails'
 gem 'dynamic_form'
-gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
-gem 'pg'
 gem 'puma'
 gem 'RedCloth'
-gem 'sass-rails', '~> 4.0.3'
-# gem 'therubyracer',  platforms: :ruby
+gem 'sass-rails'
 gem 'turbolinks'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 gem 'will_paginate'
 
-# gem 'debugger', group: [:development, :test]
-
 group :development do
-gem 'capistrano-rails'
-gem 'spring'
+  gem 'capistrano', '<3.0.0'
+  gem 'capistrano-rails'
+  gem 'rvm-capistrano'
+  gem 'spring'
 end
 
 group :test do
