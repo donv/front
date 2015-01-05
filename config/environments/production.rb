@@ -22,5 +22,5 @@ Rails.application.configure do
   # config.log_tags = [ :subdomain, :uuid ]
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
   config.log_formatter = ::Logger::Formatter.new
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 end
