@@ -16,11 +16,6 @@ namespace :deploy do
     run "#{try_sudo} /usr/bin/systemctl start #{application}"
   end
 
-  desc 'Stop the application'
-  task :stop, roles: :app do
-    run "#{try_sudo} /usr/bin/systemctl stop #{application}"
-  end
-
   desc 'Restart the service'
   task :restart, roles: :app do
     run "#{try_sudo} /usr/bin/systemctl restart #{application}"
