@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>4.1.8'
+gem 'rails', '~>4.2.10'
 
 platform :jruby do
   gem 'activerecord-jdbcpostgresql-adapter'
@@ -8,8 +8,8 @@ platform :jruby do
 end
 
 platform :ruby do
-  gem 'pg'
-  gem 'therubyracer'
+  gem 'pg', '<1'
+  gem 'mini_racer'
 end
 
 gem 'bcrypt', '~> 3.1.7'
@@ -25,10 +25,8 @@ gem 'uglifier'
 gem 'will_paginate'
 
 group :development do
-  gem 'capistrano', '<3.0.0'
-  gem 'capistrano-rails'
-  gem 'rvm-capistrano'
   gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
