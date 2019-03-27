@@ -3,18 +3,18 @@
 <p><%=txt @site.welcome_text%></p>
 
 <% if logged_in? %>
-<div align="right">[<%=link_to l(:edit), controller: :sites, action: :edit, id: @site %>]</div>
+<div align="right">[<%=link_to t(:edit), controller: :sites, action: :edit, id: @site %>]</div>
 <% end %>
 
 <% @news_items.each do |news_item| %>
 <h2><%=h news_item.title%></h2>
 <p><%=txt news_item.body%></p>
 <% if logged_in? %>
-<div align="right">[<%=link_to l(:edit), controller: :news_items, action: :edit, id: news_item %>]</div>
+<div align="right">[<%=link_to t(:edit), controller: :news_items, action: :edit, id: news_item %>]</div>
 <% end %>
 <% end %>
 
 <% if logged_in? %>
-<div align="right">[<%=link_to l(:new), controller: :news_items, action: :new %>]</div>
+<div align="right">[<%=link_to t(:new), controller: :news_items, action: :new %>]</div>
 <% end %>
 

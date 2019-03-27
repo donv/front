@@ -1,17 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'news_items_controller'
-
-# Re-raise errors caught by the controller.
-class NewsItemsController; def rescue_action(e) raise e end; end
 
 class NewsItemsControllerTest < ActionController::TestCase
   fixtures :news_items
 
   def setup
-    @controller = NewsItemsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
     @first_id = news_items(:first).id
   end
 
@@ -31,7 +23,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_show
-    get :show, :id => @first_id
+    get :show, params: {:id => @first_id}
 
     assert_response :success
     assert_template 'show'
@@ -52,7 +44,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   def test_create
     num_news_items = NewsItem.count
 
-    post :create, news_item: {title: 'A new news item', body: 'A new body!'}
+    post :create, params: {news_item: {title: 'A new news item', body: 'A new body!'}}
     assert_no_errors :news_item
 
     assert_response :redirect
@@ -62,7 +54,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_edit
-    get :edit, id: @first_id
+    get :edit, params: {id: @first_id}
 
     assert_response :success
     assert_template 'edit'
@@ -72,7 +64,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    post :update, id: @first_id, news_item:{title: 'changed news item title'}
+    post :update, params: {id: @first_id, news_item:{title: 'changed news item title'}}
     assert_response :redirect
     assert_redirected_to root_path
   end
@@ -82,7 +74,7 @@ class NewsItemsControllerTest < ActionController::TestCase
       NewsItem.find(@first_id)
     }
 
-    post :destroy, id: @first_id
+    post :destroy, params: {id: @first_id}
     assert_response :redirect
     assert_redirected_to action: :list
 

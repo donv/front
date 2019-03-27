@@ -16,29 +16,31 @@ ActiveRecord::Schema.define(version: 3) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "news_items", force: true do |t|
+  create_table "news_items", force: :cascade do |t|
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "title",      limit: 64, null: false
     t.text     "body",                  null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  create_table "sites", force: true do |t|
-    t.string   "title",        limit: 64, null: false
-    t.string   "welcome_text",            null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "schema_info", id: false, force: :cascade do |t|
+    t.integer "version"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "login"
-    t.string   "email"
+  create_table "sites", force: :cascade do |t|
+    t.string "title",        limit: 64,  null: false
+    t.string "welcome_text", limit: 255, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "login",                     limit: 255
+    t.string   "email",                     limit: 255
     t.string   "crypted_password",          limit: 40
     t.string   "salt",                      limit: 40
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token",            limit: 255
+    t.datetime "remember_token_expires_at"
   end
 
 end

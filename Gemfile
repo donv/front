@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>4.2.10'
+gem 'rails', '~>5.0.0'
 
 platform :jruby do
   gem 'activerecord-jdbcpostgresql-adapter'
@@ -18,6 +18,7 @@ gem 'coffee-rails'
 gem 'dynamic_form'
 gem 'jquery-rails'
 gem 'puma'
+gem 'rails-controller-testing'
 gem 'RedCloth'
 gem 'sass-rails'
 gem 'turbolinks'

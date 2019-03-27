@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :news_items
-  resources :sites
-  resources :users
+  get 'account/index'
+  post 'account/login'
+  get 'account/logout'
+  match 'account/signup', via: [:get, :post]
 
-  get ':controller(/:action(/:id))'
+  resources :news_items do
+    collection {get :list}
+  end
+  resources :sites do
+    collection {get :list}
+  end
+  resources :users
 end

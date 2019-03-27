@@ -1,8 +1,4 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'account_controller'
-
-# Re-raise errors caught by the controller.
-class AccountController; def rescue_action(e) raise e end; end
 
 class AccountControllerTest < ActionController::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
@@ -11,20 +7,14 @@ class AccountControllerTest < ActionController::TestCase
 
   fixtures :users
 
-  def setup
-    @controller = AccountController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
   def test_should_login_and_redirect
-    post :login, :login => 'quentin', :password => 'test'
+    post :login, params: {:login => 'quentin', :password => 'test'}
     assert session[:user]
     assert_response :redirect
   end
 
   def test_should_fail_login_and_not_redirect
-    post :login, :login => 'quentin', :password => 'bad password'
+    post :login, params: {:login => 'quentin', :password => 'bad password'}
     assert_nil session[:user]
     assert_response :success
   end
@@ -77,12 +67,12 @@ class AccountControllerTest < ActionController::TestCase
   end
 
   def test_should_remember_me
-    post :login, login: 'quentin', password: 'test', remember_me: '1'
+    post :login, params: {login: 'quentin', password: 'test', remember_me: '1'}
     assert_not_nil @response.cookies['auth_token']
   end
 
   def test_should_not_remember_me
-    post :login, login: 'quentin', password: 'test', remember_me: '0'
+    post :login, params: {login: 'quentin', password: 'test', remember_me: '0'}
     assert_nil @response.cookies['auth_token']
   end
   
@@ -94,15 +84,15 @@ class AccountControllerTest < ActionController::TestCase
 
   def test_should_login_with_cookie
     users(:quentin).remember_me
-    @request.cookies[:auth_token] = cookie_for(:quentin)
+    cookies[:auth_token] = cookie_for(:quentin)
     get :index
-    assert @controller.send(:logged_in?)
+    assert_equal 1, session[:user]
   end
 
   def test_should_fail_expired_cookie_login
     users(:quentin).remember_me
     users(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
-    @request.cookies['auth_token'] = cookie_for(:quentin)
+    cookies['auth_token'] = cookie_for(:quentin)
     get :index
     assert !@controller.send(:logged_in?)
   end
@@ -116,8 +106,8 @@ class AccountControllerTest < ActionController::TestCase
 
   protected
     def create_user(options = {})
-      post :signup, user: {login: 'quire', email: 'quire@example.com',
-              password: 'quire', password_confirmation: 'quire'}.merge(options)
+      post :signup, params: {user: {login: 'quire', email: 'quire@example.com',
+              password: 'quire', password_confirmation: 'quire'}.merge(options)}
     end
     
     def auth_token(token)
@@ -125,6 +115,6 @@ class AccountControllerTest < ActionController::TestCase
     end
     
     def cookie_for(user)
-      auth_token users(user).remember_token
+      users(user).remember_token
     end
 end

@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   layout 'mwrt002'
-  before_filter :login_from_cookie
-  before_filter :populate_layout
+  before_action :login_from_cookie
+  before_action :populate_layout
 
   private
   
