@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'will_paginate'
 
 group :development do
+  gem 'listen'
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end
