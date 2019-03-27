@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~>5.1.0'
+gem 'rails', '~>5.2.0'
 
 platform :jruby do
   gem 'activerecord-jdbcpostgresql-adapter'
@@ -13,6 +13,7 @@ platform :ruby do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'dynamic_form'
