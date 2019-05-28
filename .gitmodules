@@ -1,0 +1,3 @@
+[submodule "engines/sports"]
+	path = engines/sports
+	url = https://github.com/donv/sports.git

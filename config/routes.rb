@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  if Rails.env.production?
+    mount Sports::Engine, at: '/', constraints: { domain: 'sports.kubosch.no' }
+  else
+    mount Sports::Engine, at: '/sports'
+  end
+
   root 'welcome#index'
 
   get 'account/index'
@@ -7,10 +13,10 @@ Rails.application.routes.draw do
   match 'account/signup', via: [:get, :post]
 
   resources :news_items do
-    collection {get :list}
+    collection { get :list }
   end
   resources :sites do
-    collection {get :list}
+    collection { get :list }
   end
   resources :users
 end
