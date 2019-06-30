@@ -1,5 +1,6 @@
-PATH
-  remote: ../sports
+GIT
+  remote: git://github.com/donv/sports.git
+  revision: baac1aa9eecd46e61d89e7bdc2fac41446662ae8
   specs:
     sports (0.1.0)
       bootsnap
