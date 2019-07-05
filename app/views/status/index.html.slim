@@ -8,3 +8,6 @@ table.table
     tr
       th Uptime
       td = distance_of_time_in_words(Time.current - Front::START_TIME)
+    tr
+      th Host
+      td = request.original_url
