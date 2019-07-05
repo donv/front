@@ -1,0 +1,10 @@
+h1 Status
+
+table.table
+  tbody
+    tr
+      th Start time
+      td = Front::START_TIME
+    tr
+      th Uptime
+      td = distance_of_time_in_words(Time.current - Front::START_TIME)

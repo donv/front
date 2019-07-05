@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   resources :sites do
     collection { get :list }
   end
+
+  get 'status' => 'status#index'
+
   resources :users
 end
