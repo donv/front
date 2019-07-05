@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   if Rails.env.production?
-    # mount Sports::Engine, at: '/', constraints: { domain: 'sports.kubosch.no' }
-    # mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
-    scope subdomain: 'sports' do
-      mount Sports::Engine => '/'
-    end
+    mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
   else
     mount Sports::Engine, at: '/sports'
   end
