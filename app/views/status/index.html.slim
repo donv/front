@@ -9,5 +9,11 @@ table.table
       th Uptime
       td = distance_of_time_in_words(Time.current - Front::START_TIME)
     tr
-      th Host
+      th URL
       td = request.original_url
+    tr
+      th Domain
+      td = request.domain.inspect
+    tr
+      th Subdomain
+      td = request.subdomain.inspect
