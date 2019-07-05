@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   if Rails.env.production?
     # mount Sports::Engine, at: '/', constraints: { domain: 'sports.kubosch.no' }
-    mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
+    # mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
+    scope subdomain: 'sports' do
+      mount Sports::Engine => '/'
+    end
   else
     mount Sports::Engine, at: '/sports'
   end
-
-  root 'welcome#index'
 
   get 'account/index'
   post 'account/login'
@@ -23,4 +24,6 @@ Rails.application.routes.draw do
   get 'status' => 'status#index'
 
   resources :users
+
+  root 'welcome#index'
 end
