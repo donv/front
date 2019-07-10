@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/donv/sports.git
-  revision: e728a625395e5914f54eed9f5f526752b63e0876
+PATH
+  remote: ../sports
   specs:
     sports (0.1.0)
       bootsnap
@@ -18,6 +17,7 @@ GIT
       rails (~> 5.2)
       rmagick
       sass-rails
+      slim-rails
       uglifier
       will_paginate
 
