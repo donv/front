@@ -73,6 +73,9 @@ class UserTest < ActiveSupport::TestCase
   protected
 
   def create_user(options = {})
-    User.create({ login: 'quire', email: 'quire@example.com', password: 'quire', password_confirmation: 'quire' }.merge(options))
+    User.create(
+      { login: 'quire', email: 'quire@example.com', password: 'quire', password_confirmation: 'quire' }
+          .merge(options)
+    )
   end
 end

@@ -2,7 +2,7 @@ inherit_from: .rubocop_todo.yml
 
 Metrics/LineLength:
   IgnoreCopDirectives: true
-  Max: 129
+  Max: 107
 
 Style/Documentation:
   Enabled: false

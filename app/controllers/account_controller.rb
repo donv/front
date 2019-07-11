@@ -15,7 +15,8 @@ class AccountController < ApplicationController
 
     if params[:remember_me] == '1'
       current_user.remember_me
-      cookies[:auth_token] = { value: current_user.remember_token, expires: current_user.remember_token_expires_at }
+      cookies[:auth_token] =
+        { value: current_user.remember_token, expires: current_user.remember_token_expires_at }
     end
     redirect_back_or_default(controller: 'welcome', action: 'index')
     flash[:notice] = 'Logged in successfully'
