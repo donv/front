@@ -1,5 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+Metrics/BlockLength:
+  Exclude:
+    - db/schema.rb
+
 Metrics/LineLength:
   IgnoreCopDirectives: true
   Max: 107
