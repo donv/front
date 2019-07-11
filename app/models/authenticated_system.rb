@@ -48,7 +48,7 @@ module AuthenticatedSystem
     #   skip_before_filter :login_required
     #
     def login_required
-      username, passwd = get_auth_data
+      username, passwd = auth_data
       self.current_user ||= User.authenticate(username, passwd) || :false if username && passwd
       logged_in? && authorized? ? true : access_denied
     end
@@ -112,7 +112,7 @@ module AuthenticatedSystem
   private
     @@http_auth_headers = %w(X-HTTP_AUTHORIZATION HTTP_AUTHORIZATION Authorization)
     # gets BASIC auth info
-    def get_auth_data
+    def auth_data
       auth_key  = @@http_auth_headers.detect { |h| request.env.has_key?(h) }
       auth_data = request.env[auth_key].to_s.split unless auth_key.blank?
       return auth_data && auth_data[0] == 'Basic' ? Base64.decode64(auth_data[1]).split(':')[0..1] : [nil, nil] 
