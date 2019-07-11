@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 
 MiniTest::Reporters.use!
@@ -11,7 +13,6 @@ class ActiveSupport::TestCase
     assert_not_nil assigns(assigns_sym)
     assert_equal [], assigns(assigns_sym).errors.to_a
   end
-
 end
 
 require 'authenticated_test_helper'

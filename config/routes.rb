@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   if Rails.env.production?
     mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   get 'account/index'
   post 'account/login'
   get 'account/logout'
-  match 'account/signup', via: [:get, :post]
+  match 'account/signup', via: %i[get post]
 
   resources :news_items do
     collection { get :list }

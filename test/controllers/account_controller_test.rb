@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.dirname(__FILE__) + '/../test_helper'
 
 class AccountControllerTest < ActionController::TestCase
@@ -8,13 +10,13 @@ class AccountControllerTest < ActionController::TestCase
   fixtures :users
 
   def test_should_login_and_redirect
-    post :login, params: {:login => 'quentin', :password => 'test'}
+    post :login, params: { login: 'quentin', password: 'test' }
     assert session[:user]
     assert_response :redirect
   end
 
   def test_should_fail_login_and_not_redirect
-    post :login, params: {:login => 'quentin', :password => 'bad password'}
+    post :login, params: { login: 'quentin', password: 'bad password' }
     assert_nil session[:user]
     assert_response :success
   end
@@ -67,15 +69,15 @@ class AccountControllerTest < ActionController::TestCase
   end
 
   def test_should_remember_me
-    post :login, params: {login: 'quentin', password: 'test', remember_me: '1'}
+    post :login, params: { login: 'quentin', password: 'test', remember_me: '1' }
     assert_not_nil @response.cookies['auth_token']
   end
 
   def test_should_not_remember_me
-    post :login, params: {login: 'quentin', password: 'test', remember_me: '0'}
+    post :login, params: { login: 'quentin', password: 'test', remember_me: '0' }
     assert_nil @response.cookies['auth_token']
   end
-  
+
   def test_should_delete_token_on_logout
     login_as :quentin
     get :logout
@@ -105,16 +107,17 @@ class AccountControllerTest < ActionController::TestCase
   end
 
   protected
-    def create_user(options = {})
-      post :signup, params: {user: {login: 'quire', email: 'quire@example.com',
-              password: 'quire', password_confirmation: 'quire'}.merge(options)}
-    end
-    
-    def auth_token(token)
-      CGI::Cookie.new('name' => 'auth_token', 'value' => token)
-    end
-    
-    def cookie_for(user)
-      users(user).remember_token
-    end
+
+  def create_user(options = {})
+    post :signup, params: { user: { login: 'quire', email: 'quire@example.com',
+                                    password: 'quire', password_confirmation: 'quire' }.merge(options) }
+  end
+
+  def auth_token(token)
+    CGI::Cookie.new('name' => 'auth_token', 'value' => token)
+  end
+
+  def cookie_for(user)
+    users(user).remember_token
+  end
 end

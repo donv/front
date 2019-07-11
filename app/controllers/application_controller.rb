@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
@@ -8,20 +10,20 @@ class ApplicationController < ActionController::Base
   before_action :populate_layout
 
   private
-  
+
   def populate_layout
     @application_title = 'kubosch.no'
     @application_description = ''
     @sidebars = [
-      {title: t(:hosted_sites),
-          content: <<EOF
+      { title: t(:hosted_sites),
+        content: <<EOF
       <ul>
         <li><a href="http://jujutsu.no/" target="_blank">Romerike Jujutsu Klubb</a></li>
       </ul>
 EOF
       },
-      {title: t(:sections),
-          content: <<EOF
+      { title: t(:sections),
+        content: <<EOF
       <ul>
         <li><a href="~cuddles">Lise's photos</a></li>
         <li><a href="~donv">Uwe's Home Page</a></li>
@@ -31,20 +33,19 @@ EOF
         <li><a href="http://blog.kubosch.no/">The Blog</a></li>
       </ul>
 EOF
-      },
-#       {title: t(:links),
-#           content: <<EOF
-#       <ul>
-#         <li><a href="usage">Webalizer</a></li>
-#         <li>MRTG
-#             <ul>
-#                 <li><a href="mrtg/kubosch.no.html">Main Server</a></li>
-#                 <li><a href="mrtg/gateway_external.html">Gateway External Line</a></li>
-#         </li>
-#     </ul>
-# EOF
-#       }
+      }
+      #       {title: t(:links),
+      #           content: <<EOF
+      #       <ul>
+      #         <li><a href="usage">Webalizer</a></li>
+      #         <li>MRTG
+      #             <ul>
+      #                 <li><a href="mrtg/kubosch.no.html">Main Server</a></li>
+      #                 <li><a href="mrtg/gateway_external.html">Gateway External Line</a></li>
+      #         </li>
+      #     </ul>
+      # EOF
+      #       }
     ]
   end
-  
 end

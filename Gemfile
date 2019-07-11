@@ -1,4 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
 
 gem 'rails', '~>5.2.0'
 
@@ -24,6 +32,7 @@ gem 'will_paginate'
 
 group :development do
   gem 'listen'
+  gem 'rubocop'
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end

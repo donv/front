@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NewsItemsController < ApplicationController
   def index
     list
@@ -22,7 +24,7 @@ class NewsItemsController < ApplicationController
       flash[:notice] = 'NewsItem was successfully created.'
       redirect_to controller: :welcome, action: :index
     else
-      render :action => 'new'
+      render action: 'new'
     end
   end
 

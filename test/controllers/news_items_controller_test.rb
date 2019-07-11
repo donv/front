@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.dirname(__FILE__) + '/../test_helper'
 
 class NewsItemsControllerTest < ActionController::TestCase
@@ -23,7 +25,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_show
-    get :show, params: {:id => @first_id}
+    get :show, params: { id: @first_id }
 
     assert_response :success
     assert_template 'show'
@@ -44,7 +46,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   def test_create
     num_news_items = NewsItem.count
 
-    post :create, params: {news_item: {title: 'A new news item', body: 'A new body!'}}
+    post :create, params: { news_item: { title: 'A new news item', body: 'A new body!' } }
     assert_no_errors :news_item
 
     assert_response :redirect
@@ -54,7 +56,7 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_edit
-    get :edit, params: {id: @first_id}
+    get :edit, params: { id: @first_id }
 
     assert_response :success
     assert_template 'edit'
@@ -64,22 +66,22 @@ class NewsItemsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    post :update, params: {id: @first_id, news_item:{title: 'changed news item title'}}
+    post :update, params: { id: @first_id, news_item: { title: 'changed news item title' } }
     assert_response :redirect
     assert_redirected_to root_path
   end
 
   def test_destroy
-    assert_nothing_raised {
+    assert_nothing_raised do
       NewsItem.find(@first_id)
-    }
+    end
 
-    post :destroy, params: {id: @first_id}
+    post :destroy, params: { id: @first_id }
     assert_response :redirect
     assert_redirected_to action: :list
 
-    assert_raise(ActiveRecord::RecordNotFound) {
+    assert_raise(ActiveRecord::RecordNotFound) do
       NewsItem.find(@first_id)
-    }
+    end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SitesController < ApplicationController
   def index
     list
@@ -20,9 +22,9 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     if @site.save
       flash[:notice] = 'Site was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to action: 'list'
     else
-      render :action => 'new'
+      render action: 'new'
     end
   end
 
@@ -34,15 +36,15 @@ class SitesController < ApplicationController
     @site = Site.find(params[:id])
     if @site.update_attributes(site_params)
       flash[:notice] = 'Site was successfully updated.'
-      redirect_to :action => 'show', :id => @site
+      redirect_to action: 'show', id: @site
     else
-      render :action => 'edit'
+      render action: 'edit'
     end
   end
 
   def destroy
     Site.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to action: 'list'
   end
 
   private
@@ -50,5 +52,4 @@ class SitesController < ApplicationController
   def site_params
     params.require(:site).permit(:title, :welcome_text)
   end
-
 end

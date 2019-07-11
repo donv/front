@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/donv/sports.git
-  revision: a8a1d2edca95a0ae4b42b131a6c43e392f3a8f37
+  remote: https://github.com/donv/sports.git
+  revision: 1c87258e095fe2b446e158de9f1489daf9899786
   specs:
     sports (0.1.0)
       bootsnap
@@ -69,7 +69,8 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     arel (9.0.0)
-    autoprefixer-rails (9.6.0)
+    ast (2.4.0)
+    autoprefixer-rails (9.6.1)
       execjs
     bcrypt (3.1.13)
     binding_of_caller (0.8.0)
@@ -104,6 +105,7 @@ GEM
       rmagick (~> 2.13, >= 2.13.4)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.3)
     jquery-rails (4.3.5)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -122,7 +124,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
     mimemagic (0.3.3)
-    mini_mime (1.0.1)
+    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     mini_racer (0.2.6)
       libv8 (>= 6.9.411)
@@ -135,9 +137,12 @@ GEM
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.3.0)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
+    parallel (1.17.0)
+    parser (2.6.3.0)
+      ast (~> 2.4.0)
     pg (1.1.4)
     puma (4.0.0)
       nio4r (~> 2.0)
@@ -172,11 +177,19 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rmagick (2.16.0)
+    rubocop (0.72.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     sass (3.7.4)
@@ -219,6 +232,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (1.6.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -247,6 +261,7 @@ DEPENDENCIES
   puma
   rails (~> 5.2.0)
   rails-controller-testing
+  rubocop
   sass-rails
   slim-rails
   sports!
