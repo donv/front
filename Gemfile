@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '~>5.2.0'
 
-gem 'sports', path: '../sports'
-# gem 'sports', github: 'donv/sports'
+# gem 'sports', path: '../sports'
+gem 'sports', github: 'donv/sports'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap'
