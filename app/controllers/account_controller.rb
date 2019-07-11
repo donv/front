@@ -4,7 +4,7 @@ class AccountController < ApplicationController
   include AuthenticatedSystem
 
   def index
-    redirect_to(action: :signup) unless logged_in? || User.count > 0
+    redirect_to(action: :signup) unless logged_in? || User.count.positive?
   end
 
   def login
