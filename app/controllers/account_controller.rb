@@ -13,11 +13,7 @@ class AccountController < ApplicationController
     self.current_user = User.authenticate(params[:login], params[:password])
     return unless logged_in?
 
-    if params[:remember_me] == '1'
-      current_user.remember_me
-      cookies[:auth_token] =
-        { value: current_user.remember_token, expires: current_user.remember_token_expires_at }
-    end
+    store_remember_me
     redirect_back_or_default(controller: 'welcome', action: 'index')
     flash[:notice] = 'Logged in successfully'
   end
@@ -43,6 +39,14 @@ class AccountController < ApplicationController
   end
 
   private
+
+  def store_remember_me
+    return unless params[:remember_me] == '1'
+
+    current_user.remember_me
+    cookies[:auth_token] =
+      { value: current_user.remember_token, expires: current_user.remember_token_expires_at }
+  end
 
   def user_params
     params.require(:user).permit(:email, :login, :password, :password_confirmation)
