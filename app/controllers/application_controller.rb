@@ -33,18 +33,6 @@ class ApplicationController < ActionController::Base
           </ul>
         HTML
       }
-      #       {title: t(:links),
-      #           content: <<EOF
-      #       <ul>
-      #         <li><a href="usage">Webalizer</a></li>
-      #         <li>MRTG
-      #             <ul>
-      #                 <li><a href="mrtg/kubosch.no.html">Main Server</a></li>
-      #                 <li><a href="mrtg/gateway_external.html">Gateway External Line</a></li>
-      #         </li>
-      #     </ul>
-      # EOF
-      #       }
     ]
   end
 end
