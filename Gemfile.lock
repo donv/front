@@ -144,7 +144,7 @@ GEM
     parser (2.6.3.0)
       ast (~> 2.4.0)
     pg (1.1.4)
-    puma (4.0.0)
+    puma (4.0.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
@@ -255,6 +255,7 @@ DEPENDENCIES
   dynamic_form
   jquery-rails
   listen
+  mini_mime
   mini_racer
   minitest-reporters
   pg
