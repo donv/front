@@ -4,3 +4,5 @@ kubosch.no
 ==========
 
 Kubosch Consulting front page.
+
+http://kubosch.no/
