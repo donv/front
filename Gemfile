@@ -7,14 +7,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby File.read("#{__dir__}/.ruby-version")[5..-1]
+ruby File.read("#{__dir__}/.ruby-version")[5..]
 
 gem 'rails', '~>5.2.0'
 
 # gem 'sports', path: '../sports'
 gem 'sports', github: 'donv/sports'
 
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 gem 'bootsnap'
 gem 'bootstrap-sass'
 gem 'coffee-rails'
@@ -36,7 +36,7 @@ group :development do
   gem 'listen'
   gem 'rubocop'
   gem 'spring'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 end
 
 group :test do
