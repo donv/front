@@ -34,7 +34,8 @@ gem 'will_paginate'
 
 group :development do
   gem 'listen'
-  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'web-console'
 end

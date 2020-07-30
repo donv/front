@@ -34,7 +34,7 @@ class NewsItemsController < ApplicationController
 
   def update
     @news_item = NewsItem.find(params[:id])
-    if @news_item.update_attributes(news_item_params)
+    if @news_item.update(news_item_params)
       flash[:notice] = 'NewsItem was successfully updated.'
       redirect_to controller: :welcome, action: :index
     else

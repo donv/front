@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class NewsItem < ActiveRecord::Base
-  validates_presence_of :body, :title
+class NewsItem < ApplicationRecord
+  validates :body, :title, presence: true
 end

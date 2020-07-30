@@ -34,7 +34,7 @@ class SitesController < ApplicationController
 
   def update
     @site = Site.find(params[:id])
-    if @site.update_attributes(site_params)
+    if @site.update(site_params)
       flash[:notice] = 'Site was successfully updated.'
       redirect_to action: 'show', id: @site
     else

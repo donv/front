@@ -96,14 +96,14 @@ class AccountControllerTest < ActionController::TestCase
     users(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
     cookies['auth_token'] = cookie_for(:quentin)
     get :index
-    assert !@controller.send(:logged_in?)
+    assert_not @controller.send(:logged_in?)
   end
 
   def test_should_fail_cookie_login
     users(:quentin).remember_me
     @request.cookies['auth_token'] = auth_token('invalid_auth_token')
     get :index
-    assert !@controller.send(:logged_in?)
+    assert_not @controller.send(:logged_in?)
   end
 
   protected
