@@ -9,7 +9,7 @@ end
 
 ruby File.read("#{__dir__}/.ruby-version")[5..]
 
-gem 'rails', '~>5.2.0'
+gem 'rails', '~>6.0.0'
 
 # gem 'sports', path: '../sports'
 gem 'sports', github: 'donv/sports'
