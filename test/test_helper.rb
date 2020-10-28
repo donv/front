@@ -4,8 +4,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 
-MiniTest::Reporters.use!
-
 module ActiveSupport
   class TestCase
     parallelize

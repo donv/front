@@ -41,7 +41,3 @@ group :development do
   gem 'spring'
   gem 'web-console'
 end
-
-group :test do
-  gem 'minitest-reporters'
-end
