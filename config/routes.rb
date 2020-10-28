@@ -2,8 +2,10 @@
 
 Rails.application.routes.draw do
   if Rails.env.production?
+    mount BlogEngine::Engine, at: '/', constraints: { subdomain: 'blog' }
     mount Sports::Engine, at: '/', constraints: { subdomain: 'sports' }
   else
+    mount BlogEngine::Engine, at: '/blog'
     mount Sports::Engine, at: '/sports'
   end
 

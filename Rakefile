@@ -18,3 +18,12 @@ if Rails.env.test? || Rails.env.development?
     end
   end
 end
+
+task 'db:schema:dump' => :environment do
+  filename = 'db/schema.rb'
+  sh "rubocop --auto-correct-all #{filename} > /dev/null"
+  schema = File.read(filename)
+               .gsub(', id: :serial', '')
+               .gsub(/, id: :integer, default: -> { "nextval\('instructions_id_seq'::regclass\)" }/, '')
+  File.write(filename, schema)
+end

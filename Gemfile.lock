@@ -1,6 +1,23 @@
 GIT
+  remote: https://github.com/donv/blog.git
+  revision: 8cabc7c0993b55d170af16a701f19643efea514c
+  specs:
+    blog_engine (0.1.0)
+      RedCloth
+      bootsnap
+      dynamic_form
+      jbuilder
+      jquery-rails
+      mini_magick
+      pg
+      puma
+      rails (~> 6.0)
+      sassc-rails
+      uglifier
+
+GIT
   remote: https://github.com/donv/sports.git
-  revision: b351c60bfc1cd2eef7e6b55ece9459a425ff30b4
+  revision: 64a04786b50a4fde9e357fd1783d93ec3e58f983
   specs:
     sports (0.1.0)
       bootstrap-datepicker-rails
@@ -113,6 +130,8 @@ GEM
     histogram (0.2.4.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    jbuilder (2.10.1)
+      activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -130,6 +149,7 @@ GEM
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
     mimemagic (0.3.5)
+    mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     mini_racer (0.3.1)
@@ -266,6 +286,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   bcrypt
+  blog_engine!
   bootsnap
   bootstrap-sass
   coffee-rails

@@ -72,7 +72,7 @@ function handlePageEvent(event) {
     </div>
   <% end %>
     
-<% @sidebars.each do |sidebar| %>
+<% @sidebars.to_a.each do |sidebar| %>
     <div class="rblock">
       <div class="btitle">
   <% if sidebar[:options] %>
