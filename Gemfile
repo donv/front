@@ -11,6 +11,8 @@ ruby File.read("#{__dir__}/.ruby-version")[5..]
 
 gem 'rails', '~>6.0.0'
 
+# gem 'blog', path: '../blog'
+gem 'blog', github: 'donv/blog'
 # gem 'sports', path: '../sports'
 gem 'sports', github: 'donv/sports'
 
