@@ -8,6 +8,7 @@ MiniTest::Reporters.use!
 
 module ActiveSupport
   class TestCase
+    parallelize
     fixtures :all
 
     def assert_no_errors(assigns_sym)
