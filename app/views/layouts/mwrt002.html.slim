@@ -47,6 +47,10 @@ html
           #introtext
             h1 = @application_title
             h3 = @page_title ? @page_title : @application_description
+            - if alert
+              .alert.alert-danger.my-2 = alert
+            - if notice
+              .alert.alert-warning.my-2 = notice
         #spotlight
           = yield
       #rightcol
