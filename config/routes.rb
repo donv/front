@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     mount Sports::Engine, at: '/sports'
   end
 
-  get 'account' => 'account#login'
+  match 'account' => 'account#login', via: %i[get post]
   get 'account/index'
   get 'account/login' => 'account#login'
   post 'account/login'

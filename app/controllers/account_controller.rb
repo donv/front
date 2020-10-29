@@ -11,11 +11,13 @@ class AccountController < ApplicationController
     return unless request.post?
 
     self.current_user = User.authenticate(params[:login], params[:password])
-    return unless logged_in?
-
-    store_remember_me
-    redirect_back_or_default(controller: 'welcome', action: 'index')
-    flash[:notice] = 'Logged in successfully'
+    if logged_in?
+      store_remember_me
+      flash.notice = 'Logged in successfully'
+    else
+      flash.alert = 'Bad user name or password.'
+    end
+    redirect_back_or_default controller: 'welcome', action: 'index'
   end
 
   def signup
