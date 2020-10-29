@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/donv/blog.git
-  revision: 8cabc7c0993b55d170af16a701f19643efea514c
+  revision: f44d6f0fba4d1382358348dc5c1300c9e59d45df
   specs:
     blog_engine (0.1.0)
       RedCloth
