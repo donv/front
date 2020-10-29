@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'account/logout'
   match 'account/signup', via: %i[get post]
 
+  get 'icon/:width(x:height)' => 'icons#inline'
+
   resources :news_items do
     collection { get :list }
   end

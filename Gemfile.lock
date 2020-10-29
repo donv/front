@@ -93,7 +93,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
-    ansi (1.5.0)
     ast (2.4.1)
     autoprefixer-rails (10.0.1.0)
       execjs
@@ -109,6 +108,7 @@ GEM
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
     builder (3.2.4)
+    chunky_png (1.3.14)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -155,17 +155,14 @@ GEM
     mini_racer (0.3.1)
       libv8 (~> 8.4.255)
     minitest (5.14.2)
-    minitest-reporters (1.4.2)
-      ansi
-      builder
-      minitest (>= 5.0)
-      ruby-progressbar
     momentjs-rails (2.20.1)
       railties (>= 3.1)
     msgpack (1.3.3)
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    oily_png (1.2.1)
+      chunky_png (~> 1.3.7)
     parallel (1.19.2)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -242,6 +239,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    serviceworker-rails (0.6.0)
+      railties (>= 3.1)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -289,13 +288,14 @@ DEPENDENCIES
   blog_engine!
   bootsnap
   bootstrap-sass
+  chunky_png
   coffee-rails
   dynamic_form
   jquery-rails
   listen
   mini_mime
   mini_racer
-  minitest-reporters
+  oily_png
   pg
   puma
   rails (~> 6.0.0)
@@ -303,6 +303,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   sass-rails
+  serviceworker-rails
   slim-rails
   sports!
   spring
