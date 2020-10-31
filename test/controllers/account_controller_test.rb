@@ -15,10 +15,10 @@ class AccountControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
-  def test_should_fail_login_and_not_redirect
+  def test_should_fail_login_and_redirect
     post :login, params: { login: 'quentin', password: 'bad password' }
     assert_nil session[:user]
-    assert_response :success
+    assert_response :redirect
   end
 
   def test_should_allow_signup
