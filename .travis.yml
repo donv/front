@@ -1,7 +1,8 @@
-cache: bundler
-
-addons:
-  postgresql: "9.6"
+cache:
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
 
 script:
   - bin/rails db:setup test
