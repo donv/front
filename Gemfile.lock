@@ -1,11 +1,10 @@
 GIT
   remote: https://github.com/donv/blog.git
-  revision: d36e9d52c7e1e21a535813555f9fc24eafddbb85
+  revision: 99d942aed47b908d345d8995f09ddfe701a8a2e9
   specs:
     blog_engine (0.1.0)
       RedCloth
       bootsnap
-      dynamic_form
       jbuilder
       jquery-rails
       mini_magick
@@ -117,7 +116,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
-    dynamic_form (1.1.4)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.1)
@@ -127,7 +125,7 @@ GEM
       histogram
       rmagick
     histogram (0.2.4.1)
-    i18n (1.8.5)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
@@ -285,7 +283,6 @@ DEPENDENCIES
   bootsnap
   chunky_png
   coffee-rails
-  dynamic_form
   listen
   mini_mime
   oily_png
