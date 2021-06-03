@@ -11,10 +11,12 @@ ruby File.read("#{__dir__}/.ruby-version")[5..]
 
 gem 'rails', '~>6.0.0'
 
-# gem 'blog_engine', path: '../blog'
-gem 'blog_engine', github: 'donv/blog'
-# gem 'sports', path: '../sports'
-gem 'sports', github: 'donv/sports'
+gem 'blog_engine',
+    # path: '../blog'
+    github: 'donv/blog'
+gem 'sports',
+    # path: '../sports'
+    github: 'donv/sports'
 
 gem 'bcrypt'
 gem 'bootsnap'
@@ -22,7 +24,6 @@ gem 'chunky_png'
 gem 'coffee-rails'
 gem 'dynamic_form'
 gem 'mini_mime'
-gem 'mini_racer'
 gem 'oily_png'
 gem 'pg'
 gem 'puma'
