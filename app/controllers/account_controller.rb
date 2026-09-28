@@ -3,6 +3,8 @@
 class AccountController < ApplicationController
   include AuthenticatedSystem
 
+  before_action :signup_only_until_the_first_user, only: :signup
+
   def index
     redirect_to(action: :signup) unless logged_in? || User.any?
   end
@@ -21,9 +23,10 @@ class AccountController < ApplicationController
   end
 
   def signup
-    @user = User.new(user_params)
+    @user = User.new
     return unless request.post?
 
+    @user.assign_attributes(user_params)
     @user.save!
     self.current_user = @user
     redirect_back_or_default(controller: '/account', action: 'index')
@@ -41,6 +44,15 @@ class AccountController < ApplicationController
   end
 
   private
+
+  # Sign-up only bootstraps the first account. After that, accounts are not self-service, since a
+  # login grants access to the sports section and to editing the blog.
+  def signup_only_until_the_first_user
+    return if User.none?
+
+    flash.alert = 'Sign-up is closed.'
+    redirect_to account_login_path
+  end
 
   def store_remember_me
     return unless params[:remember_me] == '1'

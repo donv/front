@@ -27,7 +27,5 @@ Rails.application.routes.draw do
 
   get 'status' => 'status#index'
 
-  resources :users
-
   root 'welcome#index'
 end
