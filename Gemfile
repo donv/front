@@ -28,9 +28,11 @@ gem 'pg'
 gem 'puma'
 gem 'rails-controller-testing'
 gem 'RedCloth'
+gem 'sassc-embedded' # Dart Sass; replaces the unmaintained libsass binding that segfaults on Linux
 gem 'sass-rails'
 gem 'serviceworker-rails'
 gem 'slim-rails'
+gem 'terser'
 gem 'turbolinks'
 gem 'will_paginate'
 

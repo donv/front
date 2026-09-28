@@ -52,5 +52,7 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Database setup
         run: bundle exec rails db:setup
+      - name: Precompile assets (catches Sass and JavaScript build failures before deploy)
+        run: bundle exec rails assets:precompile
       - name: Rails test
         run: bundle exec rails test
