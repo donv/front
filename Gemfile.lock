@@ -34,6 +34,14 @@ GIT
       uglifier
       will_paginate
 
+GIT
+  remote: https://github.com/sass/sassc-ruby.git
+  revision: 244d3dcc8b985e25bab066b296f0f202e43e41ad
+  ref: refs/pull/233/head
+  specs:
+    sassc (2.4.0)
+      ffi (~> 1.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -275,8 +283,6 @@ GEM
       rake (>= 13)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
     sassc-embedded (1.80.10)
       sass-embedded (~> 1.80)
     sassc-rails (2.1.2)
@@ -348,6 +354,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   sass-rails
+  sassc!
   sassc-embedded
   serviceworker-rails
   slim-rails
@@ -359,7 +366,7 @@ DEPENDENCIES
   will_paginate
 
 RUBY VERSION
-   ruby 3.3.12p206
+   ruby 3.4.10p104
 
 BUNDLED WITH
    2.5.22

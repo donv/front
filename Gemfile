@@ -28,8 +28,11 @@ gem 'pg'
 gem 'puma'
 gem 'rails-controller-testing'
 gem 'RedCloth'
-gem 'sassc-embedded' # Dart Sass; replaces the unmaintained libsass binding that segfaults on Linux
 gem 'sass-rails'
+# Dart Sass instead of the unmaintained libsass binding, which segfaults on Linux. The sassc entry is
+# a shim that loads sassc-embedded, satisfying bootstrap-sass and sassc-rails without compiling libsass.
+gem 'sassc', github: 'sass/sassc-ruby', ref: 'refs/pull/233/head'
+gem 'sassc-embedded'
 gem 'serviceworker-rails'
 gem 'slim-rails'
 gem 'terser'
