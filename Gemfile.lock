@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/donv/blog.git
-  revision: 613b92e80d77f4eaa7433e899079a9126a379d8e
+  revision: 83248fe927b9acb3529864d60d7ce745810f53f0
   branch: master
   specs:
     blog_engine (0.1.0)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/donv/sports.git
-  revision: 3751dc0b5d22a4ef8b0617800b73d6a64a8b8f7c
+  revision: 992aa347a7bd7c5795570a1956815f48ad0d5877
   branch: master
   specs:
     sports (0.1.0)
