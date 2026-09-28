@@ -22,13 +22,21 @@ class ApplicationController < ActionController::Base
           </ul>
         HTML
       },
-      { title: t(:sections),
-        content: <<~HTML
-          <ul>
-            <li><a href="http://blog.kubosch.no/">The Blog</a></li>
-          </ul>
-        HTML
-      }
+      { title: t(:sections), content: "<ul>#{section_list_items}</ul>" }
     ]
+  end
+
+  def section_list_items
+    section_links.map { |name, url| %(<li><a href="#{url}">#{name}</a></li>) }.join
+  end
+
+  def section_links
+    links = [['The Blog', 'http://blog.kubosch.no/']]
+    links << ['Sports', sports_section_url] if logged_in?
+    links
+  end
+
+  def sports_section_url
+    Rails.env.production? ? 'https://sports.kubosch.no/' : '/sports'
   end
 end

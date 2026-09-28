@@ -20,12 +20,9 @@ html
     javascript:
       function handlePageEvent(event) {
         if (event.altKey && event.shiftKey && event.charCode == 78) {
-          window.location = '<%= Rails.application.routes.url_helpers.new_news_item_path %>';
+          window.location = '#{new_news_item_path}';
         } else if (event.altKey && event.charCode == 110) {
-          window.location =
-              '<%= Rails.application.routes.url_helpers.new_site_path(backlog: (@backlog ? @backlog.id : nil)) %>';
-        } else {
-          alert("shift: " + event.shiftKey + ", alt: " + event.altKey + ", ctrl: " + event.ctrlKey + ", " + event.charCode + ", " + event.keyCode);
+          window.location = '#{new_site_path}';
         }
       }
 
