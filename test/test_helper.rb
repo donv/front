@@ -6,7 +6,9 @@ require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
-    parallelize
+    # The suite runs in well under a second, so forking workers would cost more than it saves. Forking
+    # also crashes the precompiled pg gem on macOS (segfault in the child's first connection attempt).
+    parallelize(workers: 1)
     fixtures :all
 
     def assert_no_errors(assigns_sym)

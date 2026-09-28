@@ -70,23 +70,23 @@ class AccountControllerTest < ActionController::TestCase
 
   def test_should_remember_me
     post :login, params: { login: 'quentin', password: 'test', remember_me: '1' }
-    assert_not_nil @response.cookies['auth_token']
+    assert_not_nil @response.cookies['remember_token']
   end
 
   def test_should_not_remember_me
     post :login, params: { login: 'quentin', password: 'test', remember_me: '0' }
-    assert_nil @response.cookies['auth_token']
+    assert_nil @response.cookies['remember_token']
   end
 
   def test_should_delete_token_on_logout
     login_as :quentin
     get :logout
-    assert_nil @response.cookies[:auth_token]
+    assert_nil @response.cookies[:remember_token]
   end
 
   def test_should_login_with_cookie
     users(:quentin).remember_me
-    cookies[:auth_token] = cookie_for(:quentin)
+    cookies[:remember_token] = cookie_for(:quentin)
     get :index
     assert_equal 1, session[:user]
   end
@@ -94,14 +94,14 @@ class AccountControllerTest < ActionController::TestCase
   def test_should_fail_expired_cookie_login
     users(:quentin).remember_me
     users(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
-    cookies['auth_token'] = cookie_for(:quentin)
+    cookies['remember_token'] = cookie_for(:quentin)
     get :index
     assert_not @controller.send(:logged_in?)
   end
 
   def test_should_fail_cookie_login
     users(:quentin).remember_me
-    @request.cookies['auth_token'] = auth_token('invalid_auth_token')
+    @request.cookies['remember_token'] = remember_cookie('invalid_token')
     get :index
     assert_not @controller.send(:logged_in?)
   end
@@ -113,8 +113,8 @@ class AccountControllerTest < ActionController::TestCase
                                     password: 'quire', password_confirmation: 'quire' }.merge(options) }
   end
 
-  def auth_token(token)
-    CGI::Cookie.new('name' => 'auth_token', 'value' => token)
+  def remember_cookie(token)
+    CGI::Cookie.new('name' => 'remember_token', 'value' => token)
   end
 
   def cookie_for(user)
