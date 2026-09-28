@@ -9,7 +9,7 @@ end
 
 ruby File.read("#{__dir__}/.ruby-version")[5..]
 
-gem 'rails', '~> 7.1.0'
+gem 'rails', '~> 7.2.4'
 
 gem 'blog_engine',
     # path: '../blog'
@@ -39,7 +39,7 @@ gem 'terser'
 gem 'turbolinks'
 gem 'will_paginate'
 
-# Rails 7.1's test runner does not support minitest 6; drop this pin with Rails 7.2.
+# The Rails 7.x test runner does not support minitest 6; drop this pin with Rails 8.
 gem 'minitest', '< 6'
 
 group :development do
