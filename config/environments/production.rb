@@ -27,7 +27,9 @@ Rails.application.configure do
   # config.asset_host = "http://assets.example.com"
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  config.assume_ssl = true
+  # Heroku's router sets X-Forwarded-Proto, so do not assume SSL; assuming it disables the
+  # HTTP-to-HTTPS redirect that force_ssl provides.
+  config.assume_ssl = false
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
