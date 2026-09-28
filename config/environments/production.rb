@@ -1,4 +1,5 @@
 require 'active_support/core_ext/integer/time'
+require_relative '../../lib/middleware/canonical_domain'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -33,6 +34,10 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+
+  # Every other domain we own (kubosch.com, .net, .org) and the herokuapp.com host redirect to
+  # kubosch.no. This runs before the SSL redirect so a plain-HTTP request needs only one hop.
+  config.middleware.insert_before ActionDispatch::SSL, CanonicalDomain, 'kubosch.no'
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
