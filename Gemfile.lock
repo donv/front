@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/donv/sports.git
-  revision: c82aa00e2b3512298d523309884d8a7ce6790eab
+  revision: 3751dc0b5d22a4ef8b0617800b73d6a64a8b8f7c
   branch: master
   specs:
     sports (0.1.0)
