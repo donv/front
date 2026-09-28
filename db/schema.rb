@@ -12,12 +12,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 4) do
+ActiveRecord::Schema[7.1].define(version: 4) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'blog_entries', force: :cascade do |t|
-    t.datetime 'datetime', null: false
+    t.datetime 'datetime', precision: nil, null: false
     t.string 'title', limit: 64, null: false
     t.text 'text', null: false
     t.integer 'blog_id', null: false
@@ -34,8 +34,8 @@ ActiveRecord::Schema[6.1].define(version: 4) do
   end
 
   create_table 'news_items', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+    t.datetime 'created_at', precision: nil, null: false
+    t.datetime 'updated_at', precision: nil, null: false
     t.string 'title', limit: 64, null: false
     t.text 'body', null: false
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema[6.1].define(version: 4) do
   end
 
   create_table 'tours', force: :cascade do |t|
-    t.datetime 'started_at', null: false
+    t.datetime 'started_at', precision: nil, null: false
     t.time 'total_time', null: false
     t.decimal 'distance', precision: 6, scale: 2, null: false
     t.decimal 'average_speed', precision: 4, scale: 1, null: false
@@ -69,14 +69,14 @@ ActiveRecord::Schema[6.1].define(version: 4) do
     t.string 'email', limit: 255
     t.string 'crypted_password', limit: 40
     t.string 'salt', limit: 40
-    t.datetime 'created_at'
-    t.datetime 'updated_at'
+    t.datetime 'created_at', precision: nil
+    t.datetime 'updated_at', precision: nil
     t.string 'remember_token', limit: 255
-    t.datetime 'remember_token_expires_at'
+    t.datetime 'remember_token_expires_at', precision: nil
   end
 
   create_table 'weights', force: :cascade do |t|
-    t.datetime 'created_at', null: false
+    t.datetime 'created_at', precision: nil, null: false
     t.decimal 'weight', precision: 4, scale: 1, null: false
   end
 
