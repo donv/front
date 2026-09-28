@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require popper.js/dist/umd/popper.js
 //= require bootstrap
-//= require turbolinks
 //= require prototype
 //= require effects
 //= require controls

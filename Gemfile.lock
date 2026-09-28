@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/donv/blog.git
-  revision: dfd99033710af740be759488c830f573c7b61172
+  revision: 194e56d2717ea1326ac5f5a8e1b48290c5a442b6
   branch: master
   specs:
     blog_engine (0.1.0)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/donv/sports.git
-  revision: 1ed005c6e5a8c3b3ec72669208e2e6c1aa02649e
+  revision: c82aa00e2b3512298d523309884d8a7ce6790eab
   branch: master
   specs:
     sports (0.1.0)
@@ -391,9 +391,6 @@ GEM
     tilt (2.9.0)
     timeout (0.6.1)
     tsort (0.2.0)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.3.0)
@@ -441,7 +438,6 @@ DEPENDENCIES
   sports!
   spring
   terser
-  turbolinks
   web-console
   will_paginate
 

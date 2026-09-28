@@ -36,7 +36,6 @@ gem 'sassc-embedded'
 gem 'serviceworker-rails'
 gem 'slim-rails'
 gem 'terser'
-gem 'turbolinks'
 gem 'will_paginate'
 
 group :development do
