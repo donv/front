@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/donv/blog.git
-  revision: 7f1e4cb24a094f2420f141d5323761b8fe8d6301
+  revision: 6c3eca752d0d1db037abd82ed53f66d11d945bf7
   branch: master
   specs:
     blog_engine (0.1.0)
