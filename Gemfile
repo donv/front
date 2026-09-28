@@ -9,14 +9,14 @@ end
 
 ruby File.read("#{__dir__}/.ruby-version")[5..]
 
-gem 'rails', '~>6.1.4'
+gem 'rails', '~>7.0.0'
 
 gem 'blog_engine',
     # path: '../blog'
-    github: 'donv/blog'
+    github: 'donv/blog', branch: 'master'
 gem 'sports',
     # path: '../sports'
-    github: 'donv/sports'
+    github: 'donv/sports', branch: 'master'
 
 gem 'bcrypt'
 gem 'bootsnap'
@@ -32,7 +32,6 @@ gem 'sass-rails'
 gem 'serviceworker-rails'
 gem 'slim-rails'
 gem 'turbolinks'
-gem 'uglifier'
 gem 'will_paginate'
 
 group :development do

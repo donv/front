@@ -18,6 +18,10 @@ class NewsItemsController < ApplicationController
     @news_item = NewsItem.new
   end
 
+  def edit
+    @news_item = NewsItem.find(params[:id])
+  end
+
   def create
     @news_item = NewsItem.new(news_item_params)
     if @news_item.save
@@ -26,10 +30,6 @@ class NewsItemsController < ApplicationController
     else
       render action: 'new'
     end
-  end
-
-  def edit
-    @news_item = NewsItem.find(params[:id])
   end
 
   def update

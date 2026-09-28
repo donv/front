@@ -18,6 +18,10 @@ class SitesController < ApplicationController
     @site = Site.new
   end
 
+  def edit
+    @site = Site.find(params[:id])
+  end
+
   def create
     @site = Site.new(site_params)
     if @site.save
@@ -26,10 +30,6 @@ class SitesController < ApplicationController
     else
       render action: 'new'
     end
-  end
-
-  def edit
-    @site = Site.find(params[:id])
   end
 
   def update
