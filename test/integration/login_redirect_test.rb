@@ -31,6 +31,15 @@ class LoginRedirectTest < ActionDispatch::IntegrationTest
     assert_match(/remember_token=; domain=example\.com;.*expires=Thu, 01 Jan 1970/i, set_cookies)
   end
 
+  def test_sports_requires_a_login
+    get '/sports/'
+    assert_redirected_to '/account/login'
+    post '/account/login', params: { login: 'quentin', password: 'test' }
+    assert_redirected_to '/sports/'
+    follow_redirect!
+    assert_response :success
+  end
+
   def test_login_without_a_stored_location_goes_to_the_front_page
     post '/account/login', params: { login: 'quentin', password: 'test' }
     assert_redirected_to '/'
