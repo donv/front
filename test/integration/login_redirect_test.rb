@@ -40,6 +40,23 @@ class LoginRedirectTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  def test_login_page_sends_a_logged_in_visitor_home
+    post '/account/login', params: { login: 'quentin', password: 'test' }
+    get '/account/login'
+    assert_redirected_to '/'
+    get '/account'
+    assert_redirected_to '/'
+  end
+
+  def test_login_page_sends_a_remembered_visitor_to_where_they_were_headed
+    get '/sports/'
+    assert_redirected_to '/account/login'
+    users(:quentin).remember_me
+    cookies[:remember_token] = users(:quentin).remember_token
+    get '/account/login'
+    assert_redirected_to '/sports/'
+  end
+
   def test_login_without_a_stored_location_goes_to_the_front_page
     post '/account/login', params: { login: 'quentin', password: 'test' }
     assert_redirected_to '/'

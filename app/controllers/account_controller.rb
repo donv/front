@@ -4,6 +4,7 @@ class AccountController < ApplicationController
   include AuthenticatedSystem
 
   before_action :signup_only_until_the_first_user, only: :signup
+  before_action :send_logged_in_visitors_on, only: %i[index login]
 
   def index
     redirect_to(action: :signup) unless logged_in? || User.any?
@@ -44,6 +45,11 @@ class AccountController < ApplicationController
   end
 
   private
+
+  # A logged-in visitor has no use for the login page. Send them to where they were headed, or home.
+  def send_logged_in_visitors_on
+    redirect_back_or_default(root_path) if logged_in?
+  end
 
   # Sign-up only bootstraps the first account. After that, accounts are not self-service, since a
   # login grants access to the sports section and to editing the blog.
