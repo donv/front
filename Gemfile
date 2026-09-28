@@ -22,6 +22,8 @@ gem 'bcrypt'
 gem 'bootsnap'
 gem 'chunky_png'
 gem 'coffee-rails'
+# json 3 removed options that Rails 8.0 and Sprockets 4.1 still pass; drop this pin with Rails 8.1.
+gem 'json', '< 3'
 gem 'mini_mime'
 gem 'oily_png'
 gem 'pg'

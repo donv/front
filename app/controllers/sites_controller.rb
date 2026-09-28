@@ -11,7 +11,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id])
+    @site = Site.find(params.expect(:id))
   end
 
   def new
@@ -19,7 +19,7 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:id])
+    @site = Site.find(params.expect(:id))
   end
 
   def create
@@ -33,7 +33,7 @@ class SitesController < ApplicationController
   end
 
   def update
-    @site = Site.find(params[:id])
+    @site = Site.find(params.expect(:id))
     if @site.update(site_params)
       flash[:notice] = 'Site was successfully updated.'
       redirect_to action: 'show', id: @site
@@ -43,13 +43,13 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    Site.find(params[:id]).destroy
+    Site.find(params.expect(:id)).destroy
     redirect_to action: 'list'
   end
 
   private
 
   def site_params
-    params.require(:site).permit(:title, :welcome_text)
+    params.expect(site: %i[title welcome_text])
   end
 end

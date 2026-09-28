@@ -4,7 +4,7 @@ class AccountController < ApplicationController
   include AuthenticatedSystem
 
   def index
-    redirect_to(action: :signup) unless logged_in? || User.count.positive?
+    redirect_to(action: :signup) unless logged_in? || User.any?
   end
 
   def login
@@ -51,6 +51,6 @@ class AccountController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :login, :password, :password_confirmation)
+    params.expect(user: %i[email login password password_confirmation])
   end
 end

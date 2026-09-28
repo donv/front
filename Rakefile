@@ -7,7 +7,7 @@ require File.expand_path('config/application', __dir__)
 
 Rails.application.load_tasks
 
-if Rails.env.test? || Rails.env.development?
+if Rails.env.local?
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
 

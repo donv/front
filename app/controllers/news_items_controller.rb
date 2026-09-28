@@ -11,7 +11,7 @@ class NewsItemsController < ApplicationController
   end
 
   def show
-    @news_item = NewsItem.find(params[:id])
+    @news_item = NewsItem.find(params.expect(:id))
   end
 
   def new
@@ -19,7 +19,7 @@ class NewsItemsController < ApplicationController
   end
 
   def edit
-    @news_item = NewsItem.find(params[:id])
+    @news_item = NewsItem.find(params.expect(:id))
   end
 
   def create
@@ -33,7 +33,7 @@ class NewsItemsController < ApplicationController
   end
 
   def update
-    @news_item = NewsItem.find(params[:id])
+    @news_item = NewsItem.find(params.expect(:id))
     if @news_item.update(news_item_params)
       flash[:notice] = 'NewsItem was successfully updated.'
       redirect_to controller: :welcome, action: :index
@@ -43,13 +43,11 @@ class NewsItemsController < ApplicationController
   end
 
   def destroy
-    NewsItem.find(params[:id]).destroy
+    NewsItem.find(params.expect(:id)).destroy
     redirect_to action: :list
   end
 end
 
-private
-
 def news_item_params
-  params.require(:news_item).permit(:body, :title)
+  params.expect(news_item: %i[body title])
 end
