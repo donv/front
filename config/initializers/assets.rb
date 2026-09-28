@@ -14,3 +14,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w[mwrt002.css]
 Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
+
+# Precompile assets serially. sassc-rails injects its asset helpers (asset-url, image-url)
+# into a module shared by all threads for the duration of each render, so concurrent
+# stylesheet compiles can see the wrong helper and fail with "cannot load such file -- sass".
+Rails.application.config.assets.configure { |env| env.export_concurrent = false }
