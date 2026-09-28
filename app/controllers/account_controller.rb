@@ -46,8 +46,9 @@ class AccountController < ApplicationController
     return unless params[:remember_me] == '1'
 
     current_user.remember_me
-    cookies[:auth_token] =
-      { value: current_user.remember_token, expires: current_user.remember_token_expires_at }
+    cookies[:auth_token] = { value: current_user.remember_token,
+                             expires: current_user.remember_token_expires_at,
+                             httponly: true }
   end
 
   def user_params
