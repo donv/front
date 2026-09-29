@@ -10,6 +10,8 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_response :success
     assert_select 'a', text: 'The Blog'
     assert_select 'a', text: 'Sports', count: 0
+    assert_select 'a[href="#"]', count: 0
+    assert_select 'a[href*="mywebresource"]', count: 0
   end
 
   def test_index_logged_in_shows_sports_section
